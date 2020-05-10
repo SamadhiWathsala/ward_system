@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myward/screens/home/bp&obs/bp&obs.dart';
+import 'package:myward/screens/home/task/task.dart';
 import 'package:myward/screens/home/ward/ward.dart';
+import 'package:myward/screens/staff/staff.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -10,26 +13,29 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.blue.shade900,
           appBar: AppBar(
             actions: <Widget>[
-              Stack(
+              Column(
                 children: <Widget>[
                   Flex(
                     direction: Axis.horizontal,
                     children: <Widget>[
                       InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Staff()));
+                        },
                         child: CircleAvatar(
-                          backgroundImage: AssetImage('lib/images/nurse.png'),
+                          backgroundImage: AssetImage('images/nurse.png'),
                         ),
                       ),
                       SizedBox(width: 10.0,),
                       InkWell(
                         child: CircleAvatar(
-                          backgroundImage: AssetImage('lib/images/troly.png'),
+                          backgroundImage: AssetImage('images/troly.png'),
                         ),
                       ),
                       SizedBox(width: 10.0,),
                       InkWell(
                         child: CircleAvatar(
-                          backgroundImage: AssetImage('lib/images/index.png'),
+                          backgroundImage: AssetImage('images/index.png'),
                         ),
                       ),
                       IconButton(icon: Icon(Icons.more_vert), onPressed: (){})
@@ -62,6 +68,7 @@ class Home extends StatelessWidget {
             ),
             elevation: 0.0,
         ),
+        resizeToAvoidBottomPadding: false,
         body: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -74,7 +81,7 @@ class Home extends StatelessWidget {
           child: TabBarView(
               children: <Widget>[
                 Ward(),
-                Tab(icon: Icon(Icons.brightness_3),),
+                Tasks(),
                 Tab(icon: Icon(Icons.brightness_3),),
                 Tab(icon: Icon(Icons.brightness_3),)
               ],

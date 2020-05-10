@@ -10,7 +10,7 @@ class Login extends StatelessWidget {
         backgroundColor: Colors.white,
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage('lib/images/ward.jpg'),fit: BoxFit.cover),
+            image: DecorationImage(image: AssetImage('images/ward.jpg'),fit: BoxFit.cover),
           ),
           child: Flex(
               direction: Axis.vertical,

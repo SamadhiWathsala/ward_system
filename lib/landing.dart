@@ -5,6 +5,6 @@ import 'package:myward/screens/login/login.dart';
 class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Home();
+    return Login();
   }
 }

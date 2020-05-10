@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "885954232822",
+    "firebase_url": "https://ward-task.firebaseio.com",
+    "project_id": "ward-task",
+    "storage_bucket": "ward-task.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885954232822:android:90514cfdd3aead70bb47d7",
+        "android_client_info": {
+          "package_name": "com.samadhi.myward"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885954232822-1hglqeg0qsg2apms43bmt9uitl96pp3k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.samadhi.myward",
+            "certificate_hash": "0ca339c7e8b49b168f9566460fab76e95a3d6e87"
+          }
+        },
+        {
+          "client_id": "885954232822-gpna5v4funag33h0ra2b4qmsm6b05btk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIsekwLX1mWf4G8u1ogj2XcG05w6b68TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885954232822-gpna5v4funag33h0ra2b4qmsm6b05btk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,10 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Nurse{
   String userKey;
   String userName;
-  String password;
+  String passwordGet;
 
 
-  Nurse({this.userKey,this.userName,this.password});
+  Nurse({this.userKey,this.userName,this.passwordGet});
 
 
   //fetch nursing login details

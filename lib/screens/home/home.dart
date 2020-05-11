@@ -3,10 +3,14 @@ import 'package:myward/screens/home/bp&obs/bp&obs.dart';
 import 'package:myward/screens/home/task/task.dart';
 import 'package:myward/screens/home/ward/ward.dart';
 import 'package:myward/screens/staff/staff.dart';
+import 'package:myward/service/authentication.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final AuthService authService = AuthService();
+
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -38,7 +42,10 @@ class Home extends StatelessWidget {
                           backgroundImage: AssetImage('images/index.png'),
                         ),
                       ),
-                      IconButton(icon: Icon(Icons.more_vert), onPressed: (){})
+                      IconButton(icon: Icon(Icons.more_vert), onPressed: () async{
+                       // dynamic result = await authService.logOut();
+                      }
+                      )
                     ],
                   ),
                 ],

@@ -1,16 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myward/screens/home/home.dart';
+import 'package:myward/service/authentication.dart';
 
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+
+  String name;
+  String password;
+
   @override
   Widget build(BuildContext context) {
+
+    final AuthService authService = AuthService();
+
+
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+       // backgroundColor: Colors.white,
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(image: AssetImage('images/ward.jpg'),fit: BoxFit.cover),
+            color: Colors.black54
           ),
           child: Flex(
               direction: Axis.vertical,
@@ -30,6 +46,10 @@ class Login extends StatelessWidget {
                               width: MediaQuery.of(context).size.width-60,
                               height: 50.0,
                               child: TextFormField(
+                                onChanged: (val){
+                                  setState(() => name = val.trim());
+                                },
+                                validator: (val) => val.isEmpty ? 'This field is required' : null,
                                 decoration: InputDecoration(
 
                                   //prefixIcon: Icon(Icons.perm_identity,color: Colors.grey,),
@@ -56,6 +76,10 @@ class Login extends StatelessWidget {
                               width: MediaQuery.of(context).size.width-60,
                               height: 50.0,
                               child: TextFormField(
+                                onChanged: (val){
+                                  setState(() => password = val.trim());
+                                },
+                                validator: (val) => val.isEmpty ? 'This field is required' : null,
                                 decoration: InputDecoration(
                                   //prefixIcon: Icon(Icons.lock,color: Colors.grey,),
                                   hintText:'Password',suffixIcon: Icon(Icons.lock),
@@ -87,7 +111,28 @@ class Login extends StatelessWidget {
                                 ),
                                 color: Colors.blue,
                                 child: Text("Sign In",style: TextStyle(color: Colors.white),),
-                                onPressed: (){},
+                                onPressed: ()async{
+                                  //TODO implement
+                                  dynamic result = await authService.loginWithIDPassword(name, password);
+                                  if(result == 'A'){
+                                    AlertDialog(
+                                      title: Text('Plz check your user name'),
+                                    );
+                                  }
+                                  if(result == 'B'){
+                                    AlertDialog(
+                                      title: Text('You entered password is incorrect'),
+                                    );
+                                  }
+                                  if(result == 'C'){
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Home()));
+                                  }
+                                  if(result == 'D'){
+                                    AlertDialog(
+                                      title: Text('Something went wrong tryagain'),
+                                    );
+                                  }
+                                },
                               ),
                             ),
                           ],

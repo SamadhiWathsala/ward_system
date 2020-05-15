@@ -8,7 +8,12 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Login();
+    final nurse = Provider.of<Nurse>(context);
 
+    if(nurse == null){
+      return Login();
+    }else{
+      return Home();
+    }
   }
 }

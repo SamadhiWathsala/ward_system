@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myward/screens/home/home.dart';
-import 'package:myward/service/authentication.dart';
+import 'package:myward/screens/login/sign_up.dart';
+import 'package:myward/service/auth_service.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -10,15 +11,16 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
-  String name;
-  String password;
+final AuthService _authService = AuthService();
+final _formKey =GlobalKey<FormState>();
 
+//text field state
+  String email = '';
+  String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
-
-    final AuthService authService = AuthService();
-
 
     return SafeArea(
         child: Scaffold(
@@ -34,6 +36,7 @@ class _LoginState extends State<Login> {
                 children: <Widget>[
                   Flexible(
                     child: Form(
+                      key: _formKey,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,12 +50,12 @@ class _LoginState extends State<Login> {
                                   padding: const EdgeInsets.only(left:8.0),
                                   child: TextFormField(
                                     onChanged: (val){
-                                      setState(() => name = val.trim());
+                                      setState(()=> email = val );
                                     },
                                     validator: (val) => val.isEmpty ? 'This field is required' : null,
                                     decoration: InputDecoration(
-                                        hintText: 'ID number',
-                                        prefixIcon: Icon(Icons.person)
+                                        hintText: 'Email',
+                                        prefixIcon: Icon(Icons.alternate_email)
                                     ),
                                   ),
                                 ),
@@ -69,9 +72,9 @@ class _LoginState extends State<Login> {
                                   child: TextFormField(
                                     obscureText: true,
                                     onChanged: (val){
-                                      setState(() => password = val.trim());
+                                      setState(()=> password = val );
                                     },
-                                    validator: (val) => val.isEmpty ? 'This field is required' : null,
+                                    validator: (val) => val.length < 6 ? 'Enter password more than 6 characters' : null,
                                     decoration: InputDecoration(
                                       hintText: 'Password',
                                       prefixIcon: Icon(Icons.lock),
@@ -89,60 +92,13 @@ class _LoginState extends State<Login> {
                                   elevation: 0.0,
                                   child: MaterialButton(
                                     onPressed: ()async{
-                                      //TODO implement
-                                      dynamic result = await authService.loginWithIDPassword(name, password);
-                                      if(result == 'A'){
-                                        showDialog(
-                                            context: context,
-                                            builder: (BuildContext context){
-                                              return AlertDialog(
-                                                title: Text('Plz check your user name'),
-                                                actions: <Widget>[
-                                                  FlatButton(
-                                                    child: Text("Okay"),
-                                                    onPressed: () {Navigator.of(context).pop();},
-                                                  )
-                                                ],
-                                              );
-                                            }
-                                        );
+                                      if(_formKey.currentState.validate()) {
+                                        dynamic result = await _authService.signInWithEmailPassword(email, password);
+                                        if(result == null){
+                                          setState(()=> error = 'colud not Sign in with those credential');
+                                          //TODO develop this error message displaying area
+                                        }
                                       }
-                                      if(result == 'B'){
-                                        showDialog(
-                                            context: context,
-                                            builder: (BuildContext context){
-                                              return AlertDialog(
-                                                title: Text('you entered password is incorrect'),
-                                                actions: <Widget>[
-                                                  FlatButton(
-                                                    child: Text("Okay"),
-                                                    onPressed: () {Navigator.of(context).pop();},
-                                                  )
-                                                ],
-                                              );
-                                            }
-                                        );
-                                      }
-                                      if(result == 'C'){
-                                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Home()));
-                                      }
-                                      if(result == 'D'){
-                                        showDialog(
-                                            context: context,
-                                            builder: (BuildContext context){
-                                              return AlertDialog(
-                                                title: Text('Something went wrong tryagain'),
-                                                actions: <Widget>[
-                                                  FlatButton(
-                                                    child: Text("Okay"),
-                                                    onPressed: () {Navigator.of(context).pop();},
-                                                  )
-                                                ],
-                                              );
-                                            }
-                                        );
-                                      }
-
                                     },
                                     child: Text("Sign In",
                                       style: TextStyle(
@@ -156,7 +112,18 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                             Padding(padding: const EdgeInsets.all(8.0),
-                              child: Center(child: Text("forgot password?",style: TextStyle(decoration: TextDecoration.none,fontSize: 12.0,color: Colors.blue))),
+                              child: Center(
+                                  child: InkWell(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
+                                    },
+                                    child: Text(
+                                    "forgot password?",
+                                        style: TextStyle(decoration: TextDecoration.none,fontSize: 12.0,color: Colors.blue),
+
+                                    ),
+                                  )
+                              ),
                             ),
 
 

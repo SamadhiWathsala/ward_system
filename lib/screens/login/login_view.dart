@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myward/screens/home/home.dart';
+import 'package:myward/screens/login/password_reset.dart';
 import 'package:myward/screens/login/sign_up.dart';
 import 'package:myward/service/auth_service.dart';
 
@@ -97,6 +98,8 @@ final _formKey =GlobalKey<FormState>();
                                         if(result == null){
                                           setState(()=> error = 'colud not Sign in with those credential');
                                           //TODO develop this error message displaying area
+                                        }else{
+                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context)=>Home()));
                                         }
                                       }
                                     },
@@ -115,7 +118,8 @@ final _formKey =GlobalKey<FormState>();
                               child: Center(
                                   child: InkWell(
                                     onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
+                                     // Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>PasswordReset()));
                                     },
                                     child: Text(
                                     "forgot password?",

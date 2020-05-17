@@ -57,4 +57,16 @@ class AuthService{
     }
   }
 
+  //send password reset email
+  Future passwordReset(String email)async{
+    try{
+     return await _firebaseAuth.sendPasswordResetEmail(email: email).then((value)=>print('check your email'));
+    }catch(e){
+      print(e.toString());
+      return null;
+    }
+  }
+
+
+
 }

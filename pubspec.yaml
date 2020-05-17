@@ -57,10 +57,7 @@ flutter:
     - images/nurse.png
     - images/profile.png
     - images/logincover.png
-    - images/category/heart.jpg
-    - images/category/dengue.jpg
-    - images/category/leptos.jpg
-    - images/nurseCover.png
+    - images/category/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

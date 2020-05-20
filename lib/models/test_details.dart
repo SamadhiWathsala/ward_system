@@ -5,7 +5,9 @@ class Test{
   String testStatus;
   String patientId;
   String bht;
+  String patientName;
+  String testID;
 
-  Test({this.testCategory,this.testDescription,this.testStatus,this.patientId,this.bht});
+  Test({this.testCategory,this.testDescription,this.testStatus,this.patientId,this.bht,this.patientName,this.testID});
 }
 

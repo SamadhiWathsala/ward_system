@@ -28,7 +28,7 @@ class PatientDetailsService{
   }
 
 
-
+/*
   Future<List<Test>> getTest(String testCategory) async{
     try{
 
@@ -40,7 +40,8 @@ class PatientDetailsService{
           testDescription: doc.data['name'],
           testCategory: doc.data['testCategory'],
           patientId: doc.data['patientId'],
-          bht: doc.data['bht']
+          bht: doc.data['bht'],
+          patientName: doc.data['patientName'],
         );
       }).toList();
 
@@ -53,7 +54,15 @@ class PatientDetailsService{
 
 
   }
+  */
 
+
+  //After getting the test sample update test status as done
+  Future updateTestStatus(String testID,String status) async{
+    return await testCollection.document(testID).updateData({
+      'testStatus' : status,
+    });
+  }
 
 
   //fetch test list from snapshots
@@ -61,11 +70,13 @@ class PatientDetailsService{
     return snapshot.documents.map((DocumentSnapshot doc){
 
       return Test(
+          testID: doc.data['testId'],
           testCategory: doc.data['category'],
-          testDescription: doc.data['bht'],
+          testDescription: doc.data['name'],
           testStatus: doc.data['testStatus'],
           bht: doc.data['bht'],
-          patientId: doc.data['patientId']
+          patientId: doc.data['patientId'],
+          patientName: doc.data['patientName']
       );
     }).toList();
 

@@ -85,8 +85,8 @@ class Home extends StatelessWidget {
                   color: Colors.redAccent),
               tabs: <Widget>[
                   Tab(child: Text('Ward'),),
-                  Tab(child: Text('Tasks'),),
-                  Tab(child: Text('BP/Obs'),),
+                  Tab(child: Text('Test'),),
+                  Tab(child: Text('Chart'),),
                   Tab(child: Text('Drug'),),
               ],
             ),

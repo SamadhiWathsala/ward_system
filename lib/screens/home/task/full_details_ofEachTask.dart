@@ -30,6 +30,7 @@ class FullDetails extends StatelessWidget {
                 }, child: Text('Cancel')),
                 FlatButton(onPressed: (){
                   patientDetailsService.updateTestStatus( testId, 'Done');
+                  Navigator.of(context).pop();
                 }, child: Text('Done')),
               ],
             );

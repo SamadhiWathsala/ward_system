@@ -70,7 +70,7 @@ class PatientDetailsService{
     return snapshot.documents.map((DocumentSnapshot doc){
 
       return Test(
-          testID: doc.data['testId'],
+          testID: doc.documentID,
           testCategory: doc.data['category'],
           testDescription: doc.data['name'],
           testStatus: doc.data['testStatus'],

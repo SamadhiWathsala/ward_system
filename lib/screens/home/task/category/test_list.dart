@@ -77,7 +77,7 @@ class TestCategories extends StatelessWidget {
 
       return ListView(
           children: <Widget>[
-            bloodTest.length > 0 ?
+
             InkWell(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
@@ -105,9 +105,8 @@ class TestCategories extends StatelessWidget {
                   ));
                 },
                 child: categoryCardItem('blood',bloodTest.length)
-              ) : SizedBox(),
+              ),
 
-            scanTest.length > 0 ?
             InkWell(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
@@ -137,10 +136,10 @@ class TestCategories extends StatelessWidget {
                 child: categoryCardItem(
                     'Scan',scanTest.length
                 ),
-            ) : SizedBox(),
+            ) ,
 
 
-            xRayTest.length > 0 ?
+
             InkWell(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(
@@ -170,10 +169,9 @@ class TestCategories extends StatelessWidget {
               child: categoryCardItem(
                   'X-Ray',xRayTest.length
               ),
-            ) : SizedBox(),
+            ) ,
 
 
-            cultureTest.length > 0 ?
             InkWell(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(
@@ -203,9 +201,8 @@ class TestCategories extends StatelessWidget {
               child: categoryCardItem(
                   'Culture',cultureTest.length
               ),
-            ) : SizedBox(),
+            ) ,
 
-            biopsyTest.length > 0 ?
             InkWell(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(
@@ -233,7 +230,7 @@ class TestCategories extends StatelessWidget {
                   ));
                 },
                 child: categoryCardItem('Biopsy',biopsyTest.length)
-            ) : SizedBox()
+            )
             ,
           ],
       );

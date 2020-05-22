@@ -37,21 +37,6 @@ class FullDetails extends StatelessWidget {
           }
 
         );
-
-      /*
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> Scaffold(
-          appBar: AppBar(
-            title: Text('test request for '+patientName),
-          ),
-          body: Container(
-              child:
-              Text(testDescription)
-          ),
-        )
-        )
-        );
-        */
-
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 20.0,right: 20.0,top: 15.0),

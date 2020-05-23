@@ -85,7 +85,6 @@ class TreatmentTypes extends StatelessWidget {
                                 ],
                               );
                             }
-
                         );
                       },
                       child: ListTile(
@@ -102,7 +101,6 @@ class TreatmentTypes extends StatelessWidget {
           );
         },
         child: Card(
-          elevation: 2.5,
             child: ListTile(
               title: Text(type),
               trailing: CircleAvatar(
@@ -144,7 +142,6 @@ class TreatmentTypes extends StatelessWidget {
 
         ],
     );
-
 
   }
 

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:myward/models/charts_data.dart';
 import 'package:myward/models/patients_details.dart';
 import 'package:myward/models/test_details.dart';
 import 'package:myward/models/treatment_details.dart';
@@ -8,6 +9,7 @@ class PatientDetailsService{
   final CollectionReference patientCollection = Firestore.instance.collection('Patients');
   final CollectionReference testCollection = Firestore.instance.collection('Test');
   final CollectionReference treatmentCollection = Firestore.instance.collection('Treatment');
+  final CollectionReference chartCollection = Firestore.instance.collection('Chart');
 
   //patients list from snapshot
   List<Patients> _patientsListFromSnapshot(QuerySnapshot snapshot){
@@ -123,4 +125,30 @@ class PatientDetailsService{
     Stream<List<Treatment>>get treatment{
     return treatmentCollection.where('treatmentStatus',isEqualTo: 'todo').snapshots().map(_treatmentListFromSnapshot);
     }
+    
+
+    //fetch chart data from snapshot
+    List<Chart> _chartsListFromSnapshot(QuerySnapshot snapshot){
+      return snapshot.documents.map((DocumentSnapshot doc){
+
+        return Chart(
+
+          chartId: doc.documentID,
+          patientName: doc.data['patientName'],
+          chartType: doc.data['chartType'],
+          bht: doc.data['bht'],
+         //TODO implement this part
+         // values: doc.data['values']
+        );
+
+      }).toList();
+    }
+
+
+    
+    //get charts stream
+    Stream<List<Chart>>get charts{
+    return chartCollection.snapshots().map(_chartsListFromSnapshot);
+    }
+    
 }

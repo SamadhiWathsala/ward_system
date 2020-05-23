@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myward/screens/emergency_trolly/emergency_trolly.dart';
 import 'package:myward/screens/emergency_trolly/item_list.dart';
-import 'package:myward/screens/home/bp&obs/bp&obs.dart';
+import 'package:myward/screens/home/chart/charts.dart';
 import 'package:myward/screens/home/drug/treatment.dart';
 import 'package:myward/screens/home/task/task.dart';
 import 'package:myward/screens/home/ward/ward1.dart';
@@ -116,7 +116,7 @@ class Home extends StatelessWidget {
               children: <Widget>[
                 Ward(),
                 Tasks(),
-                Tab(icon: Icon(Icons.brightness_3),),
+                ChartsDetails(),
                 Treatments(),
               ],
           ),

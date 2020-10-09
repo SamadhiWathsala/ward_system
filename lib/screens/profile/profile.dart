@@ -104,7 +104,9 @@ class _ProfileState extends State<Profile> {
                                       color: Colors.white,
                                       size: 25.0,
                                     ),
-                                    onPressed: null),
+                                    onPressed: (){
+                                      Navigator.of(context).pop();
+                                    }),
                               ),
                             ),
                             Align(

@@ -29,6 +29,7 @@ dependencies:
   provider: ^4.0.4
   table_calendar: ^2.2.3
   image_picker: ^0.6.6+1
+  flutter_sparkline: ^0.1.0
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,7 @@ flutter:
     - images/profile.png
     - images/logincover.png
     - images/category/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

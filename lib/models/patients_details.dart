@@ -4,9 +4,10 @@ class Patients{
   String patientName;
   String category;
   String address;
-  int state;
+  String state;
 
 
   Patients({this.bht,this.address,this.category,this.patientName,this.state});
 
 }
+

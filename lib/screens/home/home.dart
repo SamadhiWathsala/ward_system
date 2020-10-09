@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:myward/screens/home/bp&obs/bp&obs.dart';
+import 'package:myward/screens/emergency_trolly/emergency_trolly.dart';
+import 'package:myward/screens/emergency_trolly/item_list.dart';
+import 'package:myward/screens/home/chart/charts.dart';
+import 'package:myward/screens/home/drug/treatment.dart';
 import 'package:myward/screens/home/task/task.dart';
 import 'package:myward/screens/home/ward/ward1.dart';
 import 'package:myward/screens/profile/profile.dart';
 import 'package:myward/screens/staff/staff.dart';
+import 'package:myward/screens/warning/warning_section.dart';
 import 'package:myward/service/auth_service.dart';
 
 class Home extends StatelessWidget {
@@ -38,10 +42,16 @@ class Home extends StatelessWidget {
                       ),
                       SizedBox(width: 10.0,),
                       InkWell(
+                        onTap: (){
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ItemList()));
+                        },
                         child: actionIcon('images/troly.png')
                       ),
                       SizedBox(width: 10.0,),
                       InkWell(
+                        onTap: (){
+                          Navigator.push(context,MaterialPageRoute(builder: (context)=>Warning()));
+                        },
                         child: actionIcon('images/index.png')
                       ),
                       PopupMenuButton(
@@ -80,13 +90,13 @@ class Home extends StatelessWidget {
               indicatorSize: TabBarIndicatorSize.tab,
               indicator: BoxDecoration(
                   gradient: LinearGradient(
-                      colors: [Colors.blueAccent, Colors.green]),
+                      colors: [Colors.blueAccent, Colors.white70]),
                   borderRadius: BorderRadius.circular(50),
                   color: Colors.redAccent),
               tabs: <Widget>[
                   Tab(child: Text('Ward'),),
-                  Tab(child: Text('Tasks'),),
-                  Tab(child: Text('BP/Obs'),),
+                  Tab(child: Text('Test'),),
+                  Tab(child: Text('Chart'),),
                   Tab(child: Text('Drug'),),
               ],
             ),
@@ -106,8 +116,8 @@ class Home extends StatelessWidget {
               children: <Widget>[
                 Ward(),
                 Tasks(),
-                Tab(icon: Icon(Icons.brightness_3),),
-                Tab(icon: Icon(Icons.brightness_3),)
+                ChartsDetails(),
+                Treatments(),
               ],
           ),
         ),

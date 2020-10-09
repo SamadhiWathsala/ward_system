@@ -22,12 +22,12 @@ class AuthService{
   }
 
   //sign up with email password
-  Future registerWithEmailPassword(String email, String password)async{
+  Future registerWithEmailPassword(String email, String password,String name)async{
     try{
       AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
       //create new profile data document for newly added user
-      await DatabaseService(uid: user.uid).updateNurseData('Staff Nurse',email,'images/nurseCover.png');
+      await DatabaseService(uid: user.uid).updateNurseData(name,email,'images/nurseCover.png');
       return _userFromFirebaseUser(user);
     }catch(e){
       print(e.toString());

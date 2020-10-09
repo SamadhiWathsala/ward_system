@@ -10,3 +10,4 @@ class Patients{
   Patients({this.bht,this.address,this.category,this.patientName,this.state});
 
 }
+

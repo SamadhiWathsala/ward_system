@@ -15,6 +15,7 @@ class _SignUpState extends State<SignUp>{
 String email='';
 String password='';
 String error='';
+String name='';
 
 
   @override
@@ -41,11 +42,19 @@ String error='';
                     setState(()=> password = val );
                   },
                 ),
+                SizedBox(height: 10.0,),
+                TextFormField(
+                  validator: (val) => val.length < 6 ? 'Enter an password with more then 6 character' : null,
+                  obscureText: true,
+                  onChanged: (val){
+                    setState(()=> name = val );
+                  },
+                ),
                 SizedBox(height: 20.0,),
                 RaisedButton(
                     onPressed: ()async{
                       if(_formKey.currentState.validate()) {
-                        dynamic result = await _authService.registerWithEmailPassword(email, password);
+                        dynamic result = await _authService.registerWithEmailPassword(email, password,name);
                         if(result == null){
                           setState(()=> error = 'please supply valid email');
                         }

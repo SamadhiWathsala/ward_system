@@ -41,16 +41,6 @@ class _BodyDataState extends State<BodyData> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Card(
-          child: GridTile(child: CircleAvatar(
-            backgroundImage: AssetImage('images/profile.png'),
-          ),
-            header: GridTile(child: Text('Nurse Name')),
-          ),
-        )
-      ],
-    );
+    return bodyData();
   }
 }
